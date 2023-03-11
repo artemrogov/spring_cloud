@@ -1,0 +1,50 @@
+{
+  "name": "microservice01",
+  "profiles": [
+    "dev"
+  ],
+  "label": null,
+  "version": null,
+  "state": null,
+  "propertySources": [
+    {
+      "name": "classpath:/config/microservice01-dev.properties",
+      "source": {
+        "server.port": "7000",
+        "spring.application.name": "microservice01",
+        "spring.datasource.url": "jdbc:postgresql://localhost:5433/healthapp",
+        "spring.datasource.username": "healthapp",
+        "spring.datasource.password": "test123",
+        "spring.datasource.hikari.connection-timeout": "30000",
+        "spring.datasource.hikari.maximum-pool-size": "10",
+        "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.PostgreSQLDialect",
+        "spring.jpa.database": "postgresql",
+        "spring.jpa.show-sql": "true",
+        "spring.jpa.hibernate.ddl-auto": "none"
+      }
+    },
+    {
+      "name": "classpath:/config/microservice01.properties",
+      "source": {
+        "server.port": "7000",
+        "spring.application.name": "microservice01",
+        "spring.datasource.url": "jdbc:postgresql://localhost:5433/healthapp",
+        "spring.datasource.username": "healthapp",
+        "spring.datasource.password": "test123",
+        "spring.datasource.hikari.connection-timeout": "30000",
+        "spring.datasource.hikari.maximum-pool-size": "10",
+        "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.PostgreSQLDialect",
+        "spring.jpa.database": "postgresql",
+        "spring.jpa.show-sql": "true",
+        "spring.jpa.hibernate.ddl-auto": "none",
+        "spring.cloud.discovery.enabled": "true",
+        "spring.cloud.service-registry.auto-registration.enabled": "true",
+        "eureka.client.serviceUrl.defaultZone": "${EUREKA_URI:http://localhost:8761/eureka}",
+        "eureka.client.registerWithEureka": "true",
+        "eureka.client.healthcheck.enabled": "true",
+        "eureka.instance.preferIpAddress": "true",
+        "eureka.instance.instance-id": "${spring.application.name}:${random.uuid}"
+      }
+    }
+  ]
+}
